@@ -54,6 +54,7 @@ class Admin extends Controller {
 
     public function userStore() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCsrf();
             $model = new User();
             $model->create($_POST);
             $this->redirect('admin/users');
@@ -71,6 +72,7 @@ class Admin extends Controller {
 
     public function userUpdate($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCsrf();
             $model = new User();
             $model->update($id, $_POST);
             $this->redirect('admin/users');
@@ -78,6 +80,7 @@ class Admin extends Controller {
     }
 
     public function userDelete($id) {
+        $this->validateCsrf($_GET['csrf_token'] ?? null);
         $model = new User();
         // Evitar que el admin se borre a sí mismo
         if ($id != $_SESSION['user_id']) {

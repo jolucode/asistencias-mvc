@@ -47,6 +47,7 @@
             <?php endif; ?>
             
             <form action="<?= BASE_URL ?>clock" method="POST">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <div class="form-group">
                     <input type="text" name="dni" class="form-control" required placeholder="Ej: 11111111" style="font-size: 1.5rem; text-align: center; padding: 1rem; letter-spacing: 0.1em;" autofocus autocomplete="off" pattern="[0-9]+">
                 </div>

@@ -16,4 +16,12 @@ class Controller {
         header('Location: ' . BASE_URL . ltrim($url, '/'));
         exit;
     }
+    
+    protected function validateCsrf($tokenParam = null) {
+        $token = $tokenParam ?? ($_POST['csrf_token'] ?? '');
+        if (!hash_equals($_SESSION['csrf_token'], $token)) {
+            http_response_code(403);
+            die("Error 403: Solicitud rechazada por medidas de seguridad (CSRF inválido).");
+        }
+    }
 }

@@ -19,6 +19,7 @@ class Home extends Controller {
     
     public function clock() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCsrf();
             $dni = trim($_POST['dni'] ?? '');
             if (empty($dni)) {
                 $this->setFlashMessage('Por favor, ingresa un DNI válido.', 'danger');

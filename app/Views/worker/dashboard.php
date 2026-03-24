@@ -29,6 +29,7 @@
                             <p style="font-size: 1.125rem; color: var(--text-muted);">Aún no has registrado tu entrada hoy.</p>
                         </div>
                         <form action="<?= BASE_URL ?>worker/clock" method="POST">
+                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                             <button type="submit" class="btn btn-primary" style="font-size: 1.25rem; padding: 1rem 2rem;">
                                 Registrar Entrada
                             </button>
@@ -38,6 +39,7 @@
                             <p style="font-size: 1.125rem; color: var(--success);">Entrada registrada a las <?= date('H:i', strtotime($current['clock_in'])) ?></p>
                         </div>
                         <form action="<?= BASE_URL ?>worker/clock" method="POST">
+                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                             <button type="submit" class="btn btn-danger" style="font-size: 1.25rem; padding: 1rem 2rem;">
                                 Registrar Salida
                             </button>

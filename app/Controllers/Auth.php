@@ -22,6 +22,7 @@ class Auth extends Controller {
 
     public function loginSubmit() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCsrf();
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
             
@@ -31,6 +32,7 @@ class Auth extends Controller {
             // Note: In an actual app, we'd use password_verify. 
             // The dumped sql has password123 hashed using password_hash.
             if ($user && password_verify($password, $user['password'])) {
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['role_id'] = $user['role_id'];
                 $_SESSION['first_name'] = $user['first_name'];

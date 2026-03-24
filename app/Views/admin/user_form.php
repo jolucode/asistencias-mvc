@@ -20,6 +20,7 @@
         
         <div class="card" style="max-width: 600px; margin: 0 auto;">
             <form action="<?= BASE_URL ?>admin/users/<?= $user ? 'update/'.$user['id'] : 'store' ?>" method="POST">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 
                 <div class="grid grid-cols-2">
                     <div class="form-group">

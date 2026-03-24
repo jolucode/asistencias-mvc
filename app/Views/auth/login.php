@@ -19,6 +19,7 @@
             <?php endif; ?>
             
             <form action="<?= BASE_URL ?>loginSubmit" method="POST">
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <input type="email" id="email" name="email" class="form-control" required placeholder="tu@correo.com">

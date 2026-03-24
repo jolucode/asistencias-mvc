@@ -57,7 +57,7 @@
                         <td>
                             <a href="<?= BASE_URL ?>admin/users/edit/<?= $user['id'] ?>" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; width: auto; margin-right: 0.25rem;">Editar</a>
                             <?php if ($user['id'] != $_SESSION['user_id']): ?>
-                                <a href="<?= BASE_URL ?>admin/users/delete/<?= $user['id'] ?>" class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; width: auto;" onclick="return confirm('¿Eliminar usuario?');">Eliminar</a>
+                                <a href="<?= BASE_URL ?>admin/users/delete/<?= $user['id'] ?>?csrf_token=<?= $_SESSION['csrf_token'] ?>" class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; width: auto;" onclick="return confirm('¿Eliminar usuario?');">Eliminar</a>
                             <?php endif; ?>
                         </td>
                     </tr>

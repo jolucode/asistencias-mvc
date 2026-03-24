@@ -26,6 +26,7 @@ class Worker extends Controller {
     
     public function clockInOut() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->validateCsrf();
             $model = new Attendance();
             $today = date('Y-m-d');
             $time = date('H:i:s');
